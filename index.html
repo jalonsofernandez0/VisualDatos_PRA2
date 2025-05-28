@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scrollytelling - Mercado de Vehículos Usados</title>
+  <link rel="stylesheet" href="Styles/visualization.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/scrollama"></script>
+  <script src="https://unpkg.com/topojson@3"></script>
+</head>
+<body id="top">
+  <main class="scrollytelling-container">
+    
+    <!-- Introduccion -->
+    <section id="intro" class="intro-fullscreen">
+      <div class="intro-content">
+        <h1>Práctica 2 - Visualización de datos</h1>
+        <h2>Javier Alonso Fernández</h2>
+        <p>Bienvenidos a la visualización de datos sobre el precio de venta de vehículos en Estados Unidos entre los años 2014 y 2015.</p>
+      </div>
+    </section>
+
+    <!-- Seccion 1 -->
+    <section class="intro-header">
+      <h2>¿Cómo es el mercado general de vehículos usados en EE.UU.?</h2>
+    </section>
+
+    <section class="scrolly">
+      <div class="scrolly-text">
+        <div class="step" data-step="1">
+          <p id="mainText">¿Cuál es el precio de venta más común en vehículos usados?</p>
+          <p id="subText" class="small-text">
+            Como podemos observar el precio normalmente no supera los 20000$. 
+            Ahora comprobaremos cómo pueden afectar otros factores a su precio.
+          </p>
+        </div>
+      </div>
+
+      <div class="scrolly-graphic">
+        <div class="selector-container" style="text-align:center; margin-bottom: 1rem;">
+          <label for="dataSelector" class="selector-label">Seleccione una visualización:</label>
+          <select id="dataSelector" class="selector-dropdown">
+            <option value="sellingprice">Precio de venta</option>
+            <option value="odometer">Kilometraje</option>
+          </select>
+        </div>
+
+        <svg id="viz1" width="800" height="500"></svg>
+      </div>
+    </section>
+
+
+    <!-- Seccion 2 -->
+    <section class="intro-header">
+      <h2>¿Cuáles son las marcas más vendidas?</h2>
+    </section>
+
+    <section class="scrolly">
+      <div class="scrolly-text">
+        <div class="step" data-step="2">
+          <p>Estas son las 10 marcas más vendidas en el mercado de vehículos usados.</p>
+          <p class="small-text">Como vemos, las marcas americanas tienen la primera y segunda posición claramente, y el top 10 se lo reparten principalmente vehículos americanos y asiáticos. Se añade además la marca BMW como la novena más vendida.</p>
+        </div>
+      </div>
+      <div class="scrolly-graphic">
+        <svg id="viz2" width="800" height="500"></svg>
+      </div>
+    </section>
+
+    <section class="scrolly">
+      <div class="scrolly-text">
+        <div class="step" data-step="3">
+          <p>¿Cómo varían los precios según la marca?</p>
+          <p class="small-text">La media de precio es más o menos parecida en todas las marcas excepto en el caso de BMW donde vemos que es mucho más alto su precio.</p>
+        </div>
+      </div>
+      <div class="scrolly-graphic">
+        <svg id="viz3" width="800" height="500"></svg>
+      </div>
+    </section>
+
+    <!-- Seccion 3 -->
+    <section class="intro-header">
+      <h2>¿Qué meses se venden más vehículos?</h2>
+    </section>
+
+    <section class="scrolly">
+      <div class="scrolly-text">
+        <div class="step" data-step="4">
+          <p id="mainText8">Variación de las ventas según el año</p>
+          <p class="small-text" id="subText4">
+            Como vemos, el año 2015 tiene muchos más datos y las ventas son mucho mayores en el primer trimestre que en el segundo. Del año 2014 apenas tenemos datos.
+          </p>
+        </div>
+      </div>
+
+      <div class="scrolly-graphic">
+        <div class="selector-container" style="text-align:center; margin-bottom: 1rem;">
+          <label for="yearSelector">Año:</label>
+          <select id="yearSelector"></select>
+        </div>
+        <svg id="viz4" width="800" height="500"></svg>
+      </div>
+    </section>
+
+    <!-- Seccion 4 -->
+    <section class="intro-header">
+      <h2>¿Cuál es la diferencia entre el precio de mercado y el precio de venta?</h2>
+    </section>
+
+    <section class="scrolly">
+      <div class="scrolly-text">
+        <div class="step" data-step="5">
+          <p>¿Cómo se divide esta diferencia por estados?</p>
+          <p class="small-text">Vemos en esta escala los colores verdes es donde el vendedor gana dinero respecto al precio de mercado y en rojo donde pierde dinero. Ciertos estados están en gris al no disponer de datos sobre ellos.</p>
+        </div>
+      </div>
+      <div class="scrolly-graphic">
+        <svg id="viz5" width="800" height="500"></svg>
+      </div>
+    </section>
+
+    <!-- Seccion 5 -->
+    <section class="intro-header">
+      <h2>¿Qué factores influyen en el precio del vehículo?</h2>
+    </section>
+
+    <section class="scrolly">
+      <div class="scrolly-text">
+        <div class="step" data-step="6">
+          <p>¿A mayor kilometraje, menor precio?</p>
+          <p class="small-text">Como podemos observar, los vehículos cuyo kilometraje es más alto tienden a tener un precio más bajo. Aunque existe un punto donde el precio se ve aumentado, esto puede deberse por ejemplo a vehículos clásicos antiguos.</p>
+        </div>
+      </div>
+      <div class="scrolly-graphic">
+        <svg id="viz6" width="800" height="500"></svg>
+      </div>
+    </section>
+
+    <section class="scrolly">
+      <div class="scrolly-text">
+        <div class="step" data-step="7">
+          <p id="mainText7">¿Afecta el tipo de transmisión?</p>
+          <p id="subText7" class="small-text">
+            Como podemos observar, los vehículos cuyo kilometraje es más alto tienden a tener un precio más bajo. Además, como es de esperar en Estados Unidos, la mayoría de vehículos son automáticos.
+          </p>
+        </div>
+      </div>
+
+      <div class="scrolly-graphic">
+        <div class="selector-container" style="text-align:center; margin-bottom: 1rem;">
+          <label for="dataSelector7">Comprobar cómo afecta:</label>
+          <select id="dataSelector7">
+            <option value="transmission">Transmisión</option>
+            <option value="condition_factor">Condición</option>
+          </select>
+        </div>
+        <svg id="viz7" width="800" height="500"></svg>
+      </div>
+    </section>
+
+    <!-- Sección 6 -->
+    <section class="intro-header">
+      <h2>¿Afecta el trato que se le haya dado al vehículo?</h2>
+    </section>
+
+    <section class="scrolly">
+      <div class="scrolly-text">
+        <div class="step" data-step="8">
+          <p>Relación entre la condición y el precio de venta del vehículo</p>
+          <p class="small-text">Sorprende que los vehículos con una condición muy baja tengan tanto rango de precios y una media tan superior frente a otros en mejores condiciones. Dado que estos datos provienen de un valor entero puede haber errores en ellos.</p>
+        </div>
+      </div>
+      <div class="scrolly-graphic">
+        <svg id="viz8" width="800" height="500"></svg>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p><a href="#top" class="back-to-top">Volver al inicio</a></p>
+  </footer>
+
+  <script type="module" src="JS/visualization.js"></script>
+</body>
+</html>
