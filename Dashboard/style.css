@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#scrolly-teller {
+    width: 100%;
+    height: 100vh;
+}
+
+.chart {
+    width: 80%;
+    height: 400px;
+    margin: 0 auto;
+}
