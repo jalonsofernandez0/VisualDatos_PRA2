@@ -1,4 +1,4 @@
-d3.dsv(";", "../data/car_prices_clean.csv", d3.autoType)
+d3.dsv(";", "/data/car_prices_clean.csv", d3.autoType)
   .then(data => {
     const scroller = scrollama();
 
